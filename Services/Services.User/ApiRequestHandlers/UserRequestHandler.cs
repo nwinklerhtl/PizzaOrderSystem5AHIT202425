@@ -2,6 +2,7 @@ using DataContracts.DataTransferObjects;
 using DataContracts.Messages.ServiceMessages;
 using Infrastructure.Messaging.Outbox.Domain;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Services.User.Db;
 using Services.User.Domain;
 
@@ -9,6 +10,29 @@ namespace Services.User.ApiRequestHandlers;
 
 public static class UserRequestHandler
 {
+    public static async Task<OrderItemsResponseDto> HandleOrderItemsRequest(
+        [FromRoute] Guid orderId,
+        [FromServices] UserDbContext dbContext)
+    {
+        var order = await dbContext
+            .OrderRequests
+            .Include(r => r.Items)
+            .FirstOrDefaultAsync(r => r.Id == orderId);
+
+        if (order is null)
+        {
+            throw new Exception("Order not found");
+        }
+
+        return new OrderItemsResponseDto()
+        {
+            Items = order.Items.Select(i => new ArticleDto()
+            {
+                Name = i.Article
+            }).ToList()
+        };
+    }
+    
     public static async Task<OrderResponseDto> HandleOrderRequest(
         [FromBody] OrderRequestDto dto,
         [FromServices] UserDbContext dbContext)

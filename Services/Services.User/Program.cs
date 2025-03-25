@@ -4,6 +4,7 @@ using Infrastructure.Messaging.RabbitMq;
 using Microsoft.EntityFrameworkCore;
 using Services.User.ApiRequestHandlers;
 using Services.User.Db;
+using Services.User.Messaging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,8 @@ builder.Services.AddDbContextFactory<UserDbContext>(options =>
 
 builder.Services.AddSingleton<IMessageSender>(_ =>
     RabbitMqMessagingFactory.CreateSenderAsync(Constants.ExchangeName).GetAwaiter().GetResult());
+
+builder.Services.AddHostedService<OutboxProcessorBgService>();
 
 var app = builder.Build();
 
@@ -44,6 +47,10 @@ app.UseHttpsRedirection();
 
 app.MapPost("/order", UserRequestHandler.HandleOrderRequest)
     .WithName("Place Order")
+    .WithOpenApi();
+
+app.MapGet("/order-items/{orderId:guid}", UserRequestHandler.HandleOrderItemsRequest)
+    .WithName("Order Items")
     .WithOpenApi();
 
 app.Run();

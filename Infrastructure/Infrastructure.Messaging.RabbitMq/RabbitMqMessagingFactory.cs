@@ -4,7 +4,7 @@ namespace Infrastructure.Messaging.RabbitMq;
 
 public class RabbitMqMessagingFactory
 {
-    public static async Task<RabbitMqReceiver<T>> CreateReceiver<T>(
+    public static async Task<RabbitMqReceiver<T>> CreateReceiverAsync<T>(
         string exchange,
         CloudEventMessageReceived<T> onMessageReceived,
         string hostname = "localhost")
