@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient("userClient", c =>
 {
-    c.BaseAddress = new Uri("http://localhost:5256/user-service/");
+    c.BaseAddress = new Uri("http://localhost:5256/");
 });
 
 builder.Services.AddSingleton<IMessageSender>(_ =>
@@ -25,7 +25,7 @@ await RabbitMqMessagingFactory.CreateReceiverAsync<PaymentReceived>(Constants.Ex
     {
         using var httpClient = clientFactory.CreateClient("userClient");
         var orderItems = await httpClient.GetFromJsonAsync<OrderItemsResponseDto>(
-            $"order-items/{message.OrderId}");
+            $"user-service/order-items/{message.OrderId}");
 
         if (orderItems is null) throw new Exception("could not get items to cook");
         

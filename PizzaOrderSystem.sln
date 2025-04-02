@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Kitchen", "Service
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.ApiGateway", "Infrastructure\Infrastructure.ApiGateway\Infrastructure.ApiGateway.csproj", "{4F5E13E2-84BA-4C38-BD9C-CD914C220292}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Notification", "Services\Services.Notification\Services.Notification.csproj", "{9596BC1A-043B-4D51-ADF2-B12ACC9878DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,7 @@ Global
 		{43990965-D308-4A3C-BCAB-4E0452F3C558} = {9B4C2EDA-ED95-44CD-B7B8-FFBB96E0019A}
 		{CBE959C1-CAB0-4D5D-BD30-0B646FAA71A2} = {9B4C2EDA-ED95-44CD-B7B8-FFBB96E0019A}
 		{4F5E13E2-84BA-4C38-BD9C-CD914C220292} = {1B8059E8-2793-4D85-BCBE-17749E0CFB33}
+		{9596BC1A-043B-4D51-ADF2-B12ACC9878DF} = {9B4C2EDA-ED95-44CD-B7B8-FFBB96E0019A}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{29E20178-E3D0-4110-8149-91AB58B3B29C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -79,5 +82,9 @@ Global
 		{4F5E13E2-84BA-4C38-BD9C-CD914C220292}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F5E13E2-84BA-4C38-BD9C-CD914C220292}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F5E13E2-84BA-4C38-BD9C-CD914C220292}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9596BC1A-043B-4D51-ADF2-B12ACC9878DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9596BC1A-043B-4D51-ADF2-B12ACC9878DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9596BC1A-043B-4D51-ADF2-B12ACC9878DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9596BC1A-043B-4D51-ADF2-B12ACC9878DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
